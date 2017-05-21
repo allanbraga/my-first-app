@@ -13,13 +13,38 @@
       <app-cockpit (serverCreated)="onServerAdded($event)"
                    (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
       <hr>
-      <app-server-element [srvElement]="serverElement" *ngFor="let serverElement of serverElements"></app-server-element>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy Element</button>
+      <app-server-element [srvElement]="serverElement" *ngFor="let serverElement of serverElements">
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{serverElement.content}}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{serverElement.content}}</em>
+        </p>
+
+      </app-server-element>
 
       <hr>
       <app-success-alert></app-success-alert>
       <hr>
       <app-warning-alert></app-warning-alert>
 
+      <hr>
+      <p appBasicHighlight>Basic HighLight Directive</p>
+
+      <p appBetterHighlitght [defaultColor]="'yellow'" highLightColor="red">Better HighLight Directive</p>
+
+      <hr>
+      <h1>Custom Structural Directive</h1>
+      <p *appUnless="false"> Should Render</p>
+      <p *appUnless="true"> Should not Render</p>
+
+      <hr>
+      <h1>ng Switch</h1>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is Default</p>
+      </div>
 
     </div>
   </div>

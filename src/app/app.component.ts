@@ -10,6 +10,7 @@ export class AppComponent {
   serverElements = [{type:'server', name: 'Server 1', content:'Content'}];
   newServerName = '';
   newServerContent = '';
+  value = 5;
 
   onServerAdded(serverData:{serverName:string, serverContent:string}){
     this.serverElements.push({type:'server',name:serverData.serverName,content:serverData.serverContent});
@@ -17,6 +18,10 @@ export class AppComponent {
 
   onBlueprintAdded(blueprintData:{serverName:string, serverContent:string}){
     this.serverElements.push({type:'blueprint',name:blueprintData.serverName,content:blueprintData.serverContent});
+  }
+
+  onDestroyFirst(){
+    this.serverElements.splice(0,1);
   }
 
 }

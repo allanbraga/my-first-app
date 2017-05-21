@@ -10,6 +10,9 @@ import { WarningAlertComponent } from './warning-alert/warning-alert.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CockpitComponent } from './cockpit/cockpit.component';
 import { ServerElementComponent } from './server-element/server-element.component';
+import { BasicHighlightDirective } from './basic-highlight/basic-highlight.directive';
+import { BetterHighlitghtDirective } from './better-highlight/better-highlitght.directive';
+import { UnlessDirective } from './structural-directives/unless.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ServerElementComponent } from './server-element/server-element.componen
     WarningAlertComponent,
     SuccessAlertComponent,
     CockpitComponent,
-    ServerElementComponent
+    ServerElementComponent,
+    BasicHighlightDirective,
+    BetterHighlitghtDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
