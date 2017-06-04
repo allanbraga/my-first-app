@@ -10,6 +10,8 @@ import {NewAccountComponent} from "./new-account/new-account.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AuthGuard} from "./auth-guard.service";
 import {CanDeactivateGuard} from "./servers-rout/edit-server/can-deactivate-guard.service";
+import {ErrorPageComponent} from "./error-page/error-page.component";
+import {ServerResolver} from "./servers-rout/server/server-resolver-service";
 
 const appRoutes: Routes = [
   {path:'' , component : HomeComponent },
@@ -20,11 +22,13 @@ const appRoutes: Routes = [
     //canActivate:[AuthGuard] if you want to make just for parent route
     canActivateChild:[AuthGuard], // if you want to make just for all children routes
     component : ServersRouteComponent , children: [
-    {path:':id' , component : ServerRouteComponent},
+    {path:':id' , component : ServerRouteComponent , resolve:{server:ServerResolver}},
     {path:':id/edit' , component : EditServerComponent, canDeactivate:[CanDeactivateGuard]}
   ]},
   {path:'account' , component : NewAccountComponent},
-  {path:'not-found' , component : PageNotFoundComponent},
+  //{path:'not-found' , component : PageNotFoundComponent},
+                                                      // passing static data to another page
+  {path:'not-found' , component : ErrorPageComponent , data :{message:'Page Not found !'}},
   // to handle all request that are not mapped
   {path:'**' , redirectTo:'/not-found'}
 ];
