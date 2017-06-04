@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import {ServerComponent} from "./server/server.component";
 import { ServersComponent } from './servers/servers.component';
@@ -20,20 +19,17 @@ import {LoggingServie} from "./logging.service";
 import {HomeComponent} from "./home/home.component";
 import {UsersComponent} from "./users/users.component";
 import {UserComponent} from "./users/user/user.component";
-import {Routes, RouterModule} from "@angular/router";
 import {EditServerComponent} from "./servers-rout/edit-server/edit-server.component";
 import {ServersRouteComponent} from "./servers-rout/servers.component";
 import {ServersService} from "./servers-rout/servers.service";
 import {ServerRouteComponent} from "./servers-rout/server/server.component";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AppRoutingModule} from "./app-routing.module";
+import {AuthService} from "./auth.service";
+import {AuthGuard} from "./auth-guard.service";
+import {CanDeactivateGuard} from "./servers-rout/edit-server/can-deactivate-guard.service";
 
-const appRoutes: Routes = [
-  {path:'' , component : HomeComponent},
-  {path:'users' , component : UsersComponent},
-  {path:'users/:id/:name' , component : UserComponent},
-  {path:'servers' , component : ServersRouteComponent},
-  {path:'servers/:id' , component : EditServerComponent},
-  {path:'account' , component : NewAccountComponent}
-];
+
 
 @NgModule({
   declarations: [
@@ -54,15 +50,16 @@ const appRoutes: Routes = [
     UserComponent,
     ServersRouteComponent,
     EditServerComponent,
-    ServerRouteComponent
+    ServerRouteComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
-  providers: [AccountService , LoggingServie , ServersService],
+  providers: [AccountService , LoggingServie , ServersService , AuthService , AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
