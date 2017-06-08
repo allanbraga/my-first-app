@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UsersService} from "../users.service";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
+
   users = [
     {
       id: 1,
@@ -20,4 +22,17 @@ export class UsersComponent {
       name: 'Chris'
     }
   ];
+  userActivated : number;
+
+  constructor(private usersService:UsersService){
+  }
+
+  ngOnInit() {
+    this.usersService.userActivate.subscribe(
+      (id:number) => {
+        this.userActivated = id;
+        console.log("USER ACTIVATE ...."+id);
+      }
+    )
+  }
 }

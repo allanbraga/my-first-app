@@ -12,9 +12,15 @@ import {AuthGuard} from "./auth-guard.service";
 import {CanDeactivateGuard} from "./servers-rout/edit-server/can-deactivate-guard.service";
 import {ErrorPageComponent} from "./error-page/error-page.component";
 import {ServerResolver} from "./servers-rout/server/server-resolver-service";
+import {FormComponent} from "./form/form.component";
+import {FormReactiveComponent} from "./form-reactive/form-reactive.component";
 
 const appRoutes: Routes = [
   {path:'' , component : HomeComponent },
+
+  {path:'form' , component : FormComponent},
+  {path:'form-reactive' , component : FormReactiveComponent},
+
   {path:'users' , component : UsersComponent , children:[
     {path:':id/:name' , component : UserComponent}
   ]},
@@ -31,6 +37,7 @@ const appRoutes: Routes = [
   {path:'not-found' , component : ErrorPageComponent , data :{message:'Page Not found !'}},
   // to handle all request that are not mapped
   {path:'**' , redirectTo:'/not-found'}
+
 ];
 
 

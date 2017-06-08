@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {ServerComponent} from "./server/server.component";
@@ -30,6 +30,9 @@ import {AuthGuard} from "./auth-guard.service";
 import {CanDeactivateGuard} from "./servers-rout/edit-server/can-deactivate-guard.service";
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {ServerResolver} from "./servers-rout/server/server-resolver-service";
+import {UsersService} from "./users.service";
+import { FormComponent } from './form/form.component';
+import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 
 
 
@@ -54,15 +57,18 @@ import {ServerResolver} from "./servers-rout/server/server-resolver-service";
     EditServerComponent,
     ServerRouteComponent,
     PageNotFoundComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FormComponent,
+    FormReactiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [AccountService , LoggingServie , ServersService , AuthService , AuthGuard, CanDeactivateGuard,ServerResolver],
+  providers: [AccountService , LoggingServie , ServersService , AuthService , AuthGuard, CanDeactivateGuard,ServerResolver,UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

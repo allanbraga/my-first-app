@@ -6,7 +6,7 @@
         href="#"
         class="list-group-item"
         *ngFor="let user of users">
-        {{ user.name }}
+        {{ user.name }} - {{userActivated == user.id ? '(activated)': ''}}
       </a>
     </div>
   </div>
