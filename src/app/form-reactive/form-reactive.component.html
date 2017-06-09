@@ -11,7 +11,10 @@
               class="form-control"
               formControlName="username"
             >
-            <span class="help-block" *ngIf="!signForm.get('userData.username').valid && signForm.get('userData.username').touched">User name is required!</span>
+            <span class="help-block" *ngIf="!signForm.get('userData.username').valid && signForm.get('userData.username').touched">
+              <span class="help-block" *ngIf="signForm.get('userData.username').errors['nameIsForbidden']">User name is invalid!</span>
+              <span class="help-block" *ngIf="signForm.get('userData.username').errors['required']">User name is required!</span>
+            </span>
           </div>
           <div class="form-group">
             <label for="email">email</label>
@@ -29,6 +32,13 @@
               formControlName="gender"
               [value]="gender">{{ gender }}
           </label>
+        </div>
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()" >Add Hobby</button>
+          <div class="form-group" *ngFor="let hobbyControl of signForm.get('hobbies').controls; let i = index ">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
         </div>
         <span class="help-block" *ngIf="!signForm.valid && signForm.touched">Please enter a valid data!</span>
         <button class="btn btn-primary" type="submit">Submit</button>
