@@ -1,0 +1,4 @@
+-- chrome plugin to debug the code and see properties
+https://augury.angular.io/
+
+-- https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html

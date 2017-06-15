@@ -33,6 +33,11 @@ import {ServerResolver} from "./servers-rout/server/server-resolver-service";
 import {UsersService} from "./users.service";
 import { FormComponent } from './form/form.component';
 import { FormReactiveComponent } from './form-reactive/form-reactive.component';
+import { PipesComponent } from './pipes/pipes.component';
+import {ShortenPipe} from "./pipes/shorten.pipe";
+import { FilterPipe } from './pipes/filter.pipe';
+import { HttpComponent } from './http/http.component';
+import {HttpServerService} from "./http/http-server.service";
 
 
 
@@ -59,7 +64,12 @@ import { FormReactiveComponent } from './form-reactive/form-reactive.component';
     PageNotFoundComponent,
     ErrorPageComponent,
     FormComponent,
-    FormReactiveComponent
+    FormReactiveComponent,
+    PipesComponent,
+    ShortenPipe,
+    FilterPipe,
+    HttpComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,7 +78,7 @@ import { FormReactiveComponent } from './form-reactive/form-reactive.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [AccountService , LoggingServie , ServersService , AuthService , AuthGuard, CanDeactivateGuard,ServerResolver,UsersService],
+  providers: [AccountService , LoggingServie , ServersService , AuthService , AuthGuard, CanDeactivateGuard,ServerResolver,UsersService,HttpServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

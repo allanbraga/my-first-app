@@ -7,20 +7,22 @@ import {ServersRouteComponent} from "./servers-rout/servers.component";
 import {ServerRouteComponent} from "./servers-rout/server/server.component";
 import {EditServerComponent} from "./servers-rout/edit-server/edit-server.component";
 import {NewAccountComponent} from "./new-account/new-account.component";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AuthGuard} from "./auth-guard.service";
 import {CanDeactivateGuard} from "./servers-rout/edit-server/can-deactivate-guard.service";
 import {ErrorPageComponent} from "./error-page/error-page.component";
 import {ServerResolver} from "./servers-rout/server/server-resolver-service";
 import {FormComponent} from "./form/form.component";
 import {FormReactiveComponent} from "./form-reactive/form-reactive.component";
+import {PipesComponent} from "./pipes/pipes.component";
+import {HttpComponent} from "./http/http.component";
 
 const appRoutes: Routes = [
   {path:'' , component : HomeComponent },
 
   {path:'form' , component : FormComponent},
   {path:'form-reactive' , component : FormReactiveComponent},
-
+  {path:'pipes' , component : PipesComponent},
+  {path:'http' , component : HttpComponent},
   {path:'users' , component : UsersComponent , children:[
     {path:':id/:name' , component : UserComponent}
   ]},
