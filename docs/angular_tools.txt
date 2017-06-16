@@ -2,3 +2,12 @@
 https://augury.angular.io/
 
 -- https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html
+
+
+#### how to use AOT compilation 
+ng build --prod --aot
+
+### HOW TO BUILD WITH SUB-DOMAIN 
+
+ng build --prod --aot --base-href /shop/
+
