@@ -11,7 +11,7 @@
               class="form-control"
               formControlName="username"
             >
-            <span class="help-block" *ngIf="!signForm.get('userData.username').valid && signForm.get('userData.username').touched">
+            <span class="help-block"  *ngIf="!signForm.get('userData.username').valid && signForm.get('userData.username').touched">
               <span class="help-block" *ngIf="signForm.get('userData.username').errors['nameIsForbidden']">User name is invalid!</span>
               <span class="help-block" *ngIf="signForm.get('userData.username').errors['required']">User name is required!</span>
             </span>
